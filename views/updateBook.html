@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block title %}图书列表{% endblock %}
+{% block head %}
+{% parent %}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Books</a></li>
+        <li class="active">Edit Book</li>
+    </ul>
+    <div class="books-create">
+        <h1>{{data[0].book}}</h1>
+        <div class="books-form">
+            <form id="w0" action="/updatebook/update" method="post">
+                <!-- <input type="hidden" name="_csrf" value="sapOmD6fpCbvyMfReYadNcjmz30XQTFnPYSW24fnAwDX6SvwddmXcoyCr-AUyqpC8IeYMW8ABVF258yMz6U6UQ=="> -->
+                <div class="form-group field-books-id required">
+                    <label class="control-label" for="books-id">ID</label>
+                    <input type="text" id="books-id" value="{{data[0].id}}" class="form-control" name="Books[id]" maxlength="10" aria-required="true">
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-books-book">
+                    <label class="control-label" for="books-book">Book</label>
+                    <input type="text" id="books-book" value="{{data[0].book}}" class="form-control" name="Books[book]" maxlength="52">
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-books-auther">
+                    <label class="control-label" for="books-auther">Auther</label>
+                    <input type="text" id="books-auther" value="{{data[0].auther}}" class="form-control" name="Books[auther]" maxlength="50">
+
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-books-type">
+                    <label class="control-label" for="books-type">Type</label>
+                    <input type="text" id="books-type" value="{{data[0].type}}" class="form-control" name="Books[type]" maxlength="50">
+
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-books-price">
+                    <label class="control-label" for="books-price">Price</label>
+                    <input type="text" id="books-price" value="{{data[0].price}}" class="form-control" name="Books[price]" maxlength="50">
+
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-books-publish">
+                    <label class="control-label" for="books-publish">Publish</label>
+                    <input type="text" id="books-publish" value="{{data[0].publish}}" class="form-control" name="Books[publish]" maxlength="50">
+
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-books-date">
+                    <label class="control-label" for="books-date">Date</label>
+                    <input type="text" id="books-date" value="{{data[0].date}}" class="form-control" name="Books[date]" maxlength="50">
+
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Save</button> 
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script text="javascript">
+    // import UpdateBook from 'scripts/update.js'
+    $('.btn-success').click(function(e){
+        e.preventDefault()
+        const obj = {};
+        let str = '';
+        const t = $('form').serializeArray();
+        $.each(t, function() {
+            str = this.name + '=' + this.value + '&' + str;
+        });
+        str = str.slice(0, str.length-1)
+        const editBook = new UpdateBook()
+        editBook.update(str)
+    })
+    
+    class UpdateBook {
+        constructor(ctx) {
+            this.ctx = ctx;
+        }
+        update(data){
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: data
+            }
+            fetch('http://localhost:8081/updatebook/update', options)
+            .then(response => response.json())
+            .then(data => {
+                if(data) {
+                    window.location.href = `/view?id=${data.Books.id}`
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    }
+    
+</script>
+{% endblock %}
