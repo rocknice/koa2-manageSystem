@@ -1,6 +1,6 @@
 const rp = require('request-promise')
 
-module.exports = class {
+class Book {
     initModel() {
         const options = {
             uri: 'http://localhost:8080/index.php?r=books%2Findex',
@@ -24,3 +24,4 @@ module.exports = class {
         })
     }
 }
+module.exports = Book

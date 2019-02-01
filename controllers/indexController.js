@@ -1,4 +1,4 @@
-const bookModel = require('../models/bookModel.js')
+const bookModel = require('../models/index.js')
 module.exports = {
     init(rp) {
         return async (ctx, next) => {

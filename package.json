@@ -4,7 +4,8 @@
   "description": "node做图书管理系统中间层",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "supervisor app.js"
   },
   "author": "",
   "license": "ISC",
