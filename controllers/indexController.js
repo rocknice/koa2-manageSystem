@@ -2,64 +2,29 @@ const bookModel = require('../models/index.js')
 module.exports = {
     init(rp) {
         return async (ctx, next) => {
-            // console.log('4', ctx.status)
             const model = new bookModel();
-            const data = await model.initModel();
-            // console.log('5', ctx.status)
+            const data = await model.actionInit();
             ctx.body = await ctx.render('index', {
                 data: data
             })
-            // console.log('6', ctx.status)
         }
     },
     view(rp) {
         return async (ctx, next) => {
             const params = ctx.query
-            const data = await new Promise((resolve, reject) => {
-                const options = {
-                    uri: 'http://localhost:8080/index.php?r=books/view&id=' + params.id,
-                    method: "GET",
-                    json: true,
-                    // headers: {
-                    //     "Content-Type": "application/json; charset=utf-8"
-                    // }
-                };
-                rp(options)
-                .then(function (res) {
-                    if (res) {
-                        resolve(res)
-                    }
-                })
-                .catch(function (err) {
-                    reject(err)
-                });
+            const model = new bookModel();
+            const data = await model.actionView(params);
+            ctx.body = await ctx.render('view', {
+                data: data
             })
-            if(data) {
-                ctx.body = await ctx.render('view', {
-                    data: data
-                })
-            }
+            
         }
     },
     delete(rp) {
         return async (ctx, next) => {
             const params = ctx.query
-            const data = await new Promise((resolve, reject) => {
-                const options = {
-                    uri: 'http://localhost:8080/index.php?r=books/delete&id=' + params.id,
-                    method: "GET",
-                    // json: true,
-                };
-                rp(options)
-                .then(function (res) {
-                    if (res) {
-                        resolve(res)
-                    }
-                })
-                .catch(function (err) {
-                    reject(err)
-                });
-            })
+            const model = new bookModel();
+            const data = await model.actionDelete(params);
             if(data) {
                 ctx.redirect(`/`, {
                     msg: '已删除'
@@ -82,26 +47,8 @@ module.exports = {
             //     obj['Books[' + value + ']'] = params.Books[value]
             //     // str = 'Books[' + value + ']' + '=' + params.Books[value] + '&' + str
             // }
-            console.log(1111111, params)
-            const data = await new Promise((resolve, reject) => {
-                const options = {
-                    uri: 'http://localhost:8080/index.php?r=books/create',
-                    method: "post",
-                    body: params,
-                    json: true
-                    // body: obj
-                };
-                rp(options)
-                .then(function (res) {
-                    if (res) {
-                        resolve(res)
-                    }
-                })
-                .catch(function (err) {
-                    console.log(err)
-                    reject(err)
-                });
-            })
+            const model = new bookModel();
+            const data = await model.actionCreate(params);
             if (data) {
                  ctx.body = data
             }
@@ -110,31 +57,11 @@ module.exports = {
     updateBook(rp) {
         return async (ctx, next) => {
             const params = ctx.query
-            const data = await new Promise((resolve, reject) => {
-                const options = {
-                    uri: 'http://localhost:8080/index.php?r=books/view&id=' + params.id,
-                    method: "GET",
-                    json: true,
-                    // headers: {
-                    //     "Content-Type": "application/json; charset=utf-8"
-                    // }
-                };
-                rp(options)
-                .then(function (res) {
-                    if (res) {
-                        resolve(res)
-                    }
-                })
-                .catch(function (err) {
-                    reject(err)
-                });
+            const model = new bookModel();
+            const data = await model.updatePage(params);
+            ctx.body = await ctx.render('updateBook', {
+                data: data
             })
-            if(data) {
-                ctx.body = await ctx.render('updateBook', {
-                    data: data
-                })
-            }
-            console.log(data)
         }
     },
     update(rp) {
@@ -146,24 +73,8 @@ module.exports = {
             //     obj['Books[' + value + ']'] = params.Books[value]
             //     // str = 'Books[' + value + ']' + '=' + params.Books[value] + '&' + str
             // }
-            console.log(22222, params)
-            const data = await new Promise((resolve, reject) => {
-                const options = {
-                    uri: 'http://localhost:8080/index.php?r=books/update&id=' + params.Books.id,
-                    method: "post",
-                    body: params,
-                    json: true
-                };
-                rp(options)
-                .then(function (res) {
-                    if (res) {
-                        resolve(res)
-                    }
-                })
-                .catch(function (err) {
-                    reject(err)
-                });
-            })
+            const model = new bookModel();
+            const data = await model.actionUpdate(params);
             if (data) {
                  ctx.body = data
             }
@@ -173,24 +84,8 @@ module.exports = {
         return async (ctx, next) => {
             const params = ctx.query
             const str = `BooksSearch[book]=${params.book ? params.book : ''}&BooksSearch[id]=${params.id ? params.id : ''}&BooksSearch[auther]=${params.auther ? params.auther : ''}&BooksSearch[type]=${params.type ? params.type : ''}`
-            console.log(111111, params)
-            const data = await new Promise((resolve, reject) => {
-                const options = {
-                    uri: `http://localhost:8080/index.php?${str}&r=books/index`,
-                    method: "GET",
-                    json: true
-                };
-                rp(options)
-                .then(function (res) {
-                    if (res) {
-                        resolve(res)
-                    }
-                })
-                .catch(function (err) {
-                    console.log(err)
-                    reject(err)
-                });
-            })
+            const model = new bookModel();
+            const data = await model.actionSearch(str);
             ctx.body = await ctx.render('index', {
                 data: data,
                 query: params
