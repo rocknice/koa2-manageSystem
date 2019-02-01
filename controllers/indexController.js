@@ -17,7 +17,6 @@ module.exports = {
             ctx.body = await ctx.render('view', {
                 data: data
             })
-            
         }
     },
     delete(rp) {

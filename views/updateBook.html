@@ -90,7 +90,7 @@
                 },
                 body: data
             }
-            fetch('http://localhost:8081/updatebook/update', options)
+            fetch('http://localhost:3000/updatebook/update', options)
             .then(response => response.json())
             .then(data => {
                 if(data) {

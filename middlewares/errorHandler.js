@@ -1,11 +1,12 @@
 const errorHandler = {
-    error(app) {
+    error(app, logger) {
         app.use(async (ctx, next) => {
             try{
                 await next()
             } catch(error){
                 console.log(error)
                 ctx.status = 500;
+                logger.error(error)
                 ctx.body = "出错了"
             } 
         })

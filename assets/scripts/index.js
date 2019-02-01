@@ -3,9 +3,9 @@ $(function(){
         if(e.keyCode == "13") {
             // console.log(e.target.id)
             // console.log(e.target.value)
-            window.location.href = `http://localhost:8081/search?${e.target.id}=${e.target.value}`
+            window.location.href = `http://localhost:3000/search?${e.target.id}=${e.target.value}`
             // $.ajax({
-            //     url: `http://localhost:8081/search?${e.target.id}=${e.target.value}`,
+            //     url: `http://localhost:3000/search?${e.target.id}=${e.target.value}`,
             //     method: 'get',
             //     // dataType: 'json', // 返回json数据
             //     success: function(res) {
