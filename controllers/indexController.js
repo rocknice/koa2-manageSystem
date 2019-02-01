@@ -66,7 +66,6 @@ module.exports = {
     },
     update(rp) {
         return async (ctx, next) => {
-            // console.log(ctx.request.body)
             const params = ctx.request.body
             // let obj = {}
             // for(let value in params.Books) {

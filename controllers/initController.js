@@ -1,24 +1,20 @@
 
 const indexController = require('./indexController.js')
-
+const router = require('koa-simple-router');
 module.exports = {
-    init(app, router, rp) {
+    init(app) {
         app.use(router(_ => {
-            _.get('/', indexController.init(rp))
+            _.get('/', indexController.init())
             _.get('/index', async (ctx, next) => {
-                throw new Error('500');
-                // ctx.body = await ctx.render('index')
+                koa()
             })
-            // _.get('/view', async (ctx, next) => {
-            //     ctx.body = await ctx.render('view')
-            // })
-            _.get('/view', indexController.view(rp))
-            _.get('/delete', indexController.delete(rp))
+            _.get('/view', indexController.view())
+            _.get('/delete', indexController.delete())
             _.get('/createbook', indexController.createBook())
-            _.post('/createbook/create', indexController.create(rp))
-            _.get('/updatebook', indexController.updateBook(rp))
-            _.get('/search', indexController.search(rp))
-            _.post('/updatebook/update', indexController.update(rp))
+            _.post('/createbook/create', indexController.create())
+            _.get('/updatebook', indexController.updateBook())
+            _.get('/search', indexController.search())
+            _.post('/updatebook/update', indexController.update())
         }))
     }
 }

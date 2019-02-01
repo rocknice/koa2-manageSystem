@@ -1,7 +1,5 @@
 class CreateBook {
-    // constructor(ctx) {
-    //     this.ctx = ctx;
-    // }
+    constructor() {}
     create(){
         const options = {
             method: 'POST',
@@ -18,5 +16,4 @@ class CreateBook {
         })
     }
 }
-    
 export default CreateBook
