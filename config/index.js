@@ -7,15 +7,18 @@ let config = {
 }
 if(process.env.NODE_ENV == "development") {
     const localConfig = {
+        baseURL:"http://localhost:8080/index.php?r=",
+        cacheMode:false,
         port: 3000
     }
     config = _.extend(config, localConfig);
 }
 if(process.env.NODE_ENV == "production") {
-    const localConfig = {
+    const prodConfig = {
+        cacheMode: "memory",
         port: 8081
     }
-    config = _.extend(config, localConfig);
+    config = _.extend(config, prodConfig);
 }
 
 module.exports = config

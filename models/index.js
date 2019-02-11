@@ -2,7 +2,7 @@
 const rp = require('request-promise')
 /**
  * @fileoverview 实现index的数据模型
- * @author rocknice@qq.com
+ * @author 287866455@qq.com
  */
 const SafeRequest = require('../utils/SafeRequest.js')
 /**
