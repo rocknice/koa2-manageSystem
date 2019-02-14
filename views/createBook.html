@@ -92,9 +92,10 @@
             }
             fetch('http://localhost:3000/createbook/create', options)
             .then(response => response.json())
-            .then(data => {
-                if(data) {
-                    window.location.href = `/view?id=${data.Books.id}`
+            .then(result => {
+                console.log(result)
+                if(result.data) {
+                    window.location.href = `/view?id=${result.data.Books.id}`
                 }
             })
             .catch(err => {

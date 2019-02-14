@@ -40,7 +40,7 @@ class Book {
         //         reject(err)
         //     });
         // })
-        const safeRequest = new SafeRequest("books/index");
+        const safeRequest = new SafeRequest("r=books/index");
         return safeRequest.fetch({});
     }
     actionView(params) {
@@ -60,7 +60,7 @@ class Book {
         //         reject(err)
         //     });
         // })
-        const safeRequest = new SafeRequest(`books/view&id=${params.id}`);
+        const safeRequest = new SafeRequest(`r=books/view&id=${params.id}`);
         return safeRequest.fetch({});
     }
     actionDelete(params) {
@@ -80,89 +80,99 @@ class Book {
         //         reject(err)
         //     });
         // })
-        const safeRequest = new SafeRequest(`books/delete&id=${params.id}`);
+        const safeRequest = new SafeRequest(`r=books/delete&id=${params.id}`);
         return safeRequest.fetch({});
     }
-    actionCreate(params) {
-        const options = {
-            uri: 'http://localhost:8080/index.php?r=books/create',
-            method: "post",
-            body: params,
-            json: true
-        };
-        return new Promise((resolve, reject) => {
-            rp(options)
-            .then(function (res) {
-                if (res) {
-                    resolve(res)
-                }
-            })
-            .catch(function (err) {
-                console.log(err)
-                reject(err)
-            });
-        })
-        // const safeRequest = new SafeRequest("books/create");
-        // return safeRequest.fetch({
-        //     method: "POST",
-        //     params: options.params
-        // });
+    actionCreate(options) {
+        // const options = {
+        //     uri: 'http://localhost:8080/index.php?r=books/create',
+        //     method: "post",
+        //     body: params,
+        //     json: true
+        // };
+        // return new Promise((resolve, reject) => {
+        //     rp(options)
+        //     .then(function (res) {
+        //         if (res) {
+        //             resolve(res)
+        //         }
+        //     })
+        //     .catch(function (err) {
+        //         console.log(err)
+        //         reject(err)
+        //     });
+        // })
+        const safeRequest = new SafeRequest("r=books/create");
+        return safeRequest.fetch({
+            method: "POST",
+            params: options.params
+        });
     }
     updatePage(params) {
-        const options = {
-            uri: 'http://localhost:8080/index.php?r=books/view&id=' + params.id,
-            method: "GET",
-            json: true,
-        };
-        return new Promise((resolve, reject) => {
-            rp(options)
-            .then(function (res) {
-                if (res) {
-                    resolve(res)
-                }
-            })
-            .catch(function (err) {
-                reject(err)
-            });
-        })
+        // const options = {
+        //     uri: 'http://localhost:8080/index.php?r=books/view&id=' + params.id,
+        //     method: "GET",
+        //     json: true,
+        // };
+        // return new Promise((resolve, reject) => {
+        //     rp(options)
+        //     .then(function (res) {
+        //         if (res) {
+        //             resolve(res)
+        //         }
+        //     })
+        //     .catch(function (err) {
+        //         reject(err)
+        //     });
+        // })
+        const safeRequest = new SafeRequest(`r=books/view&id=${params.id}`);
+        return safeRequest.fetch({});
     }
-    actionUpdate(params) {
-        const options = {
-            uri: 'http://localhost:8080/index.php?r=books/update&id=' + params.Books.id,
-            method: "post",
-            body: params,
-            json: true
-        };
-        return new Promise((resolve, reject) => {
-            rp(options)
-            .then(function (res) {
-                if (res) {
-                    resolve(res)
-                }
-            })
-            .catch(function (err) {
-                reject(err)
-            });
-        })
+    actionUpdate(options, id) {
+        // const options = {
+        //     uri: 'http://localhost:8080/index.php?r=books/update&id=' + params.Books.id,
+        //     method: "post",
+        //     body: params,
+        //     json: true
+        // };
+        // return new Promise((resolve, reject) => {
+        //     rp(options)
+        //     .then(function (res) {
+        //         if (res) {
+        //             resolve(res)
+        //         }
+        //     })
+        //     .catch(function (err) {
+        //         reject(err)
+        //     });
+        // })
+        const safeRequest = new SafeRequest(`r=books/update&id=${id}`)
+        return safeRequest.fetch({
+            method: "POST",
+            params: options.params
+        });
     }
     actionSearch(str) {
-        const options = {
-            uri: `http://localhost:8080/index.php?${str}&r=books/index`,
-            method: "GET",
-            json: true
-        };
-        return new Promise((resolve, reject) => {
-            rp(options)
-            .then(function (res) {
-                if (res) {
-                    resolve(res)
-                }
-            })
-            .catch(function (err) {
-                console.log(err)
-                reject(err)
-            });
-        })
+        // const options = {
+        //     uri: `http://localhost:8080/index.php?${str}&r=books/index`,
+        //     method: "GET",
+        //     json: true
+        // };
+        // return new Promise((resolve, reject) => {
+        //     rp(options)
+        //     .then(function (res) {
+        //         if (res) {
+        //             resolve(res)
+        //         }
+        //     })
+        //     .catch(function (err) {
+        //         console.log(err)
+        //         reject(err)
+        //     });
+        // })
+        console.log(111111, str)
+        const safeRequest = new SafeRequest(`${str}&r=books/index`);
+        return safeRequest.fetch({});
     }
 }
 module.exports = Book

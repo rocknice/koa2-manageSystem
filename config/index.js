@@ -7,7 +7,7 @@ let config = {
 }
 if(process.env.NODE_ENV == "development") {
     const localConfig = {
-        baseURL:"http://localhost:8080/index.php?r=",
+        baseURL:"http://localhost:8080/index.php?",
         cacheMode:false,
         port: 3000
     }
