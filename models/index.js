@@ -1,10 +1,9 @@
-
-const rp = require('request-promise')
 /**
  * @fileoverview 实现index的数据模型
  * @author 287866455@qq.com
  */
-const SafeRequest = require('../utils/SafeRequest.js')
+const rp = require('request-promise')
+const SafeRequest = require("../utils/SafeRequest.js")
 /**
  * Book类 获取后台关于图书相关的数据类
  * @class
@@ -24,62 +23,65 @@ class Book {
      * actionInit()
      */
     actionInit() {
-        const options = {
-            uri: 'http://localhost:8080/index.php?r=books%2Findex',
-            method: "GET",
-            json: true,
-            // headers: {
-            //     "Content-Type": "application/json; charset=utf-8"
-            // }
-        };
-        return new Promise((resolve, reject) => {
-            rp(options)
-            .then(function (res) {
-                if (res) {
-                    resolve(res)
-                }
-                resolve(res.data)
-            })
-            .catch(function (err) {
-                reject(err)
-            });
-        })
+        // const options = {
+        //     uri: 'http://localhost:8080/index.php?r=books%2Findex',
+        //     method: "GET",
+        //     json: true
+        // };
+        // return new Promise((resolve, reject) => {
+        //     rp(options)
+        //     .then(function (res) {
+        //         if (res) {
+        //             resolve(res)
+        //         }
+        //         resolve(res.data)
+        //     })
+        //     .catch(function (err) {
+        //         reject(err)
+        //     });
+        // })
+        const safeRequest = new SafeRequest("books/index");
+        return safeRequest.fetch({});
     }
     actionView(params) {
-        const options = {
-            uri: 'http://localhost:8080/index.php?r=books/view&id=' + params.id,
-            method: "GET",
-            json: true,
-        };
-        return new Promise((resolve, reject) => {
-            rp(options)
-            .then(function (res) {
-                if (res) {
-                    resolve(res)
-                }
-            })
-            .catch(function (err) {
-                reject(err)
-            });
-        })
+        // const options = {
+        //     uri: 'http://localhost:8080/index.php?r=books/view&id=' + params.id,
+        //     method: "GET",
+        //     json: true,
+        // };
+        // return new Promise((resolve, reject) => {
+        //     rp(options)
+        //     .then(function (res) {
+        //         if (res) {
+        //             resolve(res)
+        //         }
+        //     })
+        //     .catch(function (err) {
+        //         reject(err)
+        //     });
+        // })
+        const safeRequest = new SafeRequest(`books/view&id=${params.id}`);
+        return safeRequest.fetch({});
     }
     actionDelete(params) {
-        const options = {
-            uri: 'http://localhost:8080/index.php?r=books/delete&id=' + params.id,
-            method: "GET",
-            // json: true,
-        };
-        return new Promise((resolve, reject) => {
-            rp(options)
-            .then(function (res) {
-                if (res) {
-                    resolve(res)
-                }
-            })
-            .catch(function (err) {
-                reject(err)
-            });
-        })
+        // const options = {
+        //     uri: 'http://localhost:8080/index.php?r=books/delete&id=' + params.id,
+        //     method: "GET",
+        //     // json: true,
+        // };
+        // return new Promise((resolve, reject) => {
+        //     rp(options)
+        //     .then(function (res) {
+        //         if (res) {
+        //             resolve(res)
+        //         }
+        //     })
+        //     .catch(function (err) {
+        //         reject(err)
+        //     });
+        // })
+        const safeRequest = new SafeRequest(`books/delete&id=${params.id}`);
+        return safeRequest.fetch({});
     }
     actionCreate(params) {
         const options = {
@@ -87,7 +89,6 @@ class Book {
             method: "post",
             body: params,
             json: true
-            // body: obj
         };
         return new Promise((resolve, reject) => {
             rp(options)
@@ -101,6 +102,11 @@ class Book {
                 reject(err)
             });
         })
+        // const safeRequest = new SafeRequest("books/create");
+        // return safeRequest.fetch({
+        //     method: "POST",
+        //     params: options.params
+        // });
     }
     updatePage(params) {
         const options = {

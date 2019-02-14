@@ -1,30 +1,33 @@
 const bookModel = require('../models/index.js')
+const {
+    URLSearchParams
+} = require("url");
 module.exports = {
-    init(rp) {
+    init() {
         return async (ctx, next) => {
             const model = new bookModel();
-            const data = await model.actionInit();
+            const result = await model.actionInit();
             ctx.body = await ctx.render('index', {
-                data: data
+                data: result.data
             })
         }
     },
-    view(rp) {
+    view() {
         return async (ctx, next) => {
             const params = ctx.query
             const model = new bookModel();
-            const data = await model.actionView(params);
+            const result = await model.actionView(params);
             ctx.body = await ctx.render('view', {
-                data: data
+                data: result.data
             })
         }
     },
-    delete(rp) {
+    delete() {
         return async (ctx, next) => {
             const params = ctx.query
             const model = new bookModel();
-            const data = await model.actionDelete(params);
-            if(data) {
+            const result = await model.actionDelete(params);
+            if(result.data) {
                 ctx.redirect(`/`, {
                     msg: '已删除'
                 });
@@ -37,7 +40,7 @@ module.exports = {
             ctx.body = await ctx.render('createBook')
         }
     },
-    create(rp) {
+    create() {
         return async (ctx, next) => {
             console.log(ctx.request.body)
             const params = ctx.request.body
@@ -51,9 +54,24 @@ module.exports = {
             if (data) {
                  ctx.body = data
             }
+            // console.log(ctx.request.body)
+            // const info = ctx.request.body
+            // const model = new bookModel();
+            // const params = new URLSearchParams();
+            // params.append("Books[date]", info.Books.date);
+            // params.append("Books[auther]", info.Books.auther);
+            // params.append("Books[publish]", info.Books.publish);
+            // params.append("Books[book]", info.Books.book);
+            // params.append("Books[id]", info.Books.id);
+            // params.append("Books[type]", info.Books.type);
+            // const result = await model.actionCreate({
+            //     params
+            // });
+            // console.log('----', result)
+            // ctx.body = result
         }
     },
-    updateBook(rp) {
+    updateBook() {
         return async (ctx, next) => {
             const params = ctx.query
             const model = new bookModel();
@@ -63,7 +81,7 @@ module.exports = {
             })
         }
     },
-    update(rp) {
+    update() {
         return async (ctx, next) => {
             const params = ctx.request.body
             // let obj = {}
@@ -78,7 +96,7 @@ module.exports = {
             }
         }
     },
-    search(rp) {
+    search() {
         return async (ctx, next) => {
             const params = ctx.query
             const str = `BooksSearch[book]=${params.book ? params.book : ''}&BooksSearch[id]=${params.id ? params.id : ''}&BooksSearch[auther]=${params.auther ? params.auther : ''}&BooksSearch[type]=${params.type ? params.type : ''}`

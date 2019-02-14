@@ -7,7 +7,7 @@ const errorHandler = {
                 console.log(error)
                 ctx.status = 500;
                 logger.error(error)
-                ctx.body = "出错了"
+                ctx.body = "服务器出错了"
             } 
         })
         app.use(async (ctx, next) => {
