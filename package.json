@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development supervisor app.js",
+    "build": "babel ./assets/scripts/index.js --out-file ./assets/scripts/index-bundle.js",
     "docs": "jsdoc ./**/*.js -d ./docs/jsdocs"
   },
   "author": "",
@@ -26,6 +27,10 @@
     "request-promise": "^4.2.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-transform-modules-systemjs": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
     "jsdoc": "^3.5.5"
   }
 }

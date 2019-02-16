@@ -12,7 +12,7 @@ app.use(serve(config.staticDir));
 app.context.render = co.wrap(render({
     root: config.viewDir,
     autoescape: true,
-    cache: 'memory', // disable, set to false
+    cache: config.cacheMode, // disable, set to false
     ext: 'html',
     writeBody: false
 }));

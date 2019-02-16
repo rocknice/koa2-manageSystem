@@ -63,46 +63,18 @@
         </div>
     </div>
 </div>
-<script text="javascript">
-    // import CreateBook from 'scripts/create.js'
-    $('.btn-success').click(function(e){
-        e.preventDefault()
-        const obj = {};
-        let str = '';
-        const t = $('form').serializeArray();
-        $.each(t, function() {
-            str = this.name + '=' + this.value + '&' + str;
-        });
-        str = str.slice(0, str.length-1)
-        const newBook = new CreateBook()
-        newBook.create(str)
+<script type="module">
+    console.log('我支持module')
+    import('/scripts/create.js').then((_) => {
+        const create = new _.default();
+        create.fn()
     })
-    
-    class CreateBook {
-        constructor(ctx) {
-            this.ctx = ctx;
-        }
-        create(data){
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: data
-            }
-            fetch('http://localhost:3000/createbook/create', options)
-            .then(response => response.json())
-            .then(result => {
-                console.log(result)
-                if(result.data) {
-                    window.location.href = `/view?id=${result.data.Books.id}`
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        }
-    }
-    
+</script>
+<script type="nomodule" src="https://cdn.staticfile.org/systemjs/3.0.0/system.js"></script>
+<script type="nomodule">
+    System.import('/scripts/create-bundle.js').then((_) => {
+        const create = new _.default();
+        create.fn()
+    })
 </script>
 {% endblock %}

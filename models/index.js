@@ -170,7 +170,6 @@ class Book {
         //         reject(err)
         //     });
         // })
-        console.log(111111, str)
         const safeRequest = new SafeRequest(`${str}&r=books/index`);
         return safeRequest.fetch({});
     }
