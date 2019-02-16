@@ -1,16 +1,3 @@
-// $('.btn-success').click(function(e){
-//     e.preventDefault()
-//     const obj = {};
-//     let str = '';
-//     const t = $('form').serializeArray();
-//     $.each(t, function() {
-//         str = this.name + '=' + this.value + '&' + str;
-//     });
-//     str = str.slice(0, str.length-1)
-//     const newBook = new CreateBook()
-//     newBook.create(str)
-// })
-
 class CreateBook {
     constructor() {
         this.btn = $('.btn-success');
@@ -29,7 +16,7 @@ class CreateBook {
             newBook.create(str)
         })
     }
-    create(data){
+    create(data) {
         const options = {
             method: 'POST',
             headers: {

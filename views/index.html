@@ -43,15 +43,15 @@
         </div>
     </div>
 </div>
-<script type="nomodule">
-    console.log('我支持module')
+<script type="module">
+    console.log('支持module')
     import('/scripts/index.js').then((_) => {
         const index = new _.default();
         index.view();
     })
 </script>
-<script type="module" src="https://cdn.staticfile.org/systemjs/3.0.0/system.js"></script>
-<script type="module">
+<script type="nomodule" src="https://cdn.staticfile.org/systemjs/3.0.0/system.js"></script>
+<script type="nomodule">
     System.import('/scripts/index-bundle.js').then((_)=>{
         const index = new _.default;
         index.view();
