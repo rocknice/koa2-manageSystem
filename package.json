@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development supervisor app.js",
     "build": "babel ./assets/scripts/index.js --out-file ./assets/scripts/index-bundle.js",
-    "docs": "jsdoc ./**/*.js -d ./docs/jsdocs"
+    "docs": "jsdoc ./**/*.js -d ./docs/jsdocs",
+    "server:dev": "scripty",
+    "server:prod": "scripty",
+    "server:lint": "scripty"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +34,12 @@
     "@babel/core": "^7.3.3",
     "@babel/plugin-transform-modules-systemjs": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
-    "jsdoc": "^3.5.5"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-rollup": "^2.16.2",
+    "gulp-watch": "^5.0.1",
+    "jsdoc": "^3.5.5",
+    "scripty": "^1.9.1"
   }
 }

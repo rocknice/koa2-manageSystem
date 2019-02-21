@@ -1,4 +1,5 @@
-const Koa  = require('koa');
+// const Koa  = require('koa');
+import Koa from 'koa';
 const serve = require('koa-static');
 const app = new Koa();
 const render = require('koa-swig');
