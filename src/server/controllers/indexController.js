@@ -56,7 +56,6 @@ module.exports = {
             // }
             // console.log(ctx.request.body)
             const info = ctx.request.body
-            console.log(000, info)
             const model = new bookModel();
             const params = new URLSearchParams();
             params.append("Books[date]", info.Books.date);
