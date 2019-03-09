@@ -1,15 +1,11 @@
 "use strict";
 
-var _koa = require("koa");
+const Koa = require('koa'); // import Koa from 'koa';
 
-var _koa2 = _interopRequireDefault(_koa);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// const Koa  = require('koa');
 const serve = require('koa-static');
 
-const app = new _koa2.default();
+const app = new Koa();
 
 const render = require('koa-swig');
 
@@ -56,4 +52,15 @@ errorHandler.error(app, logger);
 initController.init(app);
 app.listen(config.port, () => {
   console.log(`服务已在${config.port}端口启动`);
-});
+}); // 筛选出符合的人
+// var mans = [
+//   {name: '张三'},
+//   {name: '李四'},
+//   {name: '王二'},
+//   {name: '赵六'}
+// ]
+// function searchMan(query) {
+//   return mans.filter((man) => {
+//     return man.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+//   })
+// }

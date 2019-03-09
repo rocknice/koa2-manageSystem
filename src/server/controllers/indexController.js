@@ -7,7 +7,7 @@ module.exports = {
         return async (ctx, next) => {
             const model = new bookModel();
             const result = await model.actionInit();
-            ctx.body = await ctx.render('index', {
+            ctx.body = await ctx.render('home', {
                 data: result.data
             })
         }
@@ -37,7 +37,7 @@ module.exports = {
     },
     createBook() {
         return async (ctx, next) => {
-            ctx.body = await ctx.render('createBook')
+            ctx.body = await ctx.render('create')
         }
     },
     create() {
@@ -62,6 +62,7 @@ module.exports = {
             params.append("Books[auther]", info.Books.auther);
             params.append("Books[publish]", info.Books.publish);
             params.append("Books[book]", info.Books.book);
+            params.append("Books[price]", info.Books.price);
             params.append("Books[id]", info.Books.id);
             params.append("Books[type]", info.Books.type);
             const result = await model.actionCreate({
@@ -76,7 +77,7 @@ module.exports = {
             const params = ctx.query
             const model = new bookModel();
             const result = await model.updatePage(params);
-            ctx.body = await ctx.render('updateBook', {
+            ctx.body = await ctx.render('update', {
                 data: result.data
             })
         }
@@ -96,11 +97,13 @@ module.exports = {
             params.append("Books[auther]", info.Books.auther);
             params.append("Books[publish]", info.Books.publish);
             params.append("Books[book]", info.Books.book);
+            params.append("Books[price]", info.Books.price);
             params.append("Books[id]", info.Books.id);
             params.append("Books[type]", info.Books.type);
             const result = await model.actionUpdate({
                 params
             }, info.Books.id);
+            console.log(result)
             ctx.body = result
         }
     },

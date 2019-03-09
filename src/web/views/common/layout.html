@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="/styles/bootstrap.min.css" rel="stylesheet">
+    <link href="/styles/index.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/common.js"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <header class="header">
+        <nav id="w1" class="navbar-inverse navbar-fixed-top navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">图书管理系统</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        {% block navigation %}{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-left">© 图书管理系统 2019</p>
+        </div>
+    </footer>
+</body>
+</html>

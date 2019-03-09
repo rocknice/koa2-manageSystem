@@ -4,13 +4,13 @@ const path = require('path')
 const _ = require('lodash')
 
 let config = {
-    "viewDir": path.join(__dirname, "..", "views"),
-    "staticDir": path.join(__dirname, "..", "assets")
+    "viewDir": path.join(__dirname, "../../web/views/books/", "pages"),
+    "staticDir": path.join(__dirname, "../../web/", "assets")
 }
 if(process.env.NODE_ENV == "development") {
     const localConfig = {
         baseURL:"http://localhost:8080/index.php?",
-        cacheMode:false,
+        cacheMode: false,
         port: 3001
     }
     config = _.extend(config, localConfig);

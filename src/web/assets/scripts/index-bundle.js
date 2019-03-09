@@ -30,7 +30,7 @@ System.register([], function (_export, _context) {
               if (e.keyCode == "13") {
                 // console.log(e.target.id)
                 // console.log(e.target.value)
-                window.location.href = "http://localhost:3000/search?".concat(e.target.id, "=").concat(e.target.value); // $.ajax({
+                window.location.href = "http://localhost:3001/search?".concat(e.target.id, "=").concat(e.target.value); // $.ajax({
                 //     url: `http://localhost:3000/search?${e.target.id}=${e.target.value}`,
                 //     method: 'get',
                 //     // dataType: 'json', // 返回json数据
