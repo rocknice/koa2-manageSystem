@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const watch = require('gulp-watch');
-const rollup = require('gulp-rollup');
+const rollup = require('gulp-rollup'); // 可以去除gulp中无用的代码，rollup的tree-shaking
 const replace = require('rollup-plugin-replace');// 替换掉config里的多余代码
 const eslint = require('gulp-eslint')
 const entry = "./src/server/**/*.js"
@@ -37,7 +37,7 @@ function buildlint() {
     return gulp.src(entry)
         .pipe(eslint())
         .pipe(eslint.format())
-        .pipe(fallAfterError())
+        .pipe(eslint.failAfterError())
 }
 // 清洗环境
 function buildconfig() {

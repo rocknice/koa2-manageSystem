@@ -1,5 +1,5 @@
-// const Koa  = require('koa');
-import Koa from 'koa';
+const Koa = require('koa');
+// import Koa from 'koa';
 const serve = require('koa-static');
 const app = new Koa();
 const render = require('koa-swig');
@@ -29,3 +29,17 @@ const logger = log4js.getLogger('cheese');
 errorHandler.error(app, logger);
 initController.init(app)
 app.listen(config.port, () => {console.log(`服务已在${config.port}端口启动`)})
+
+
+// 筛选出符合的人
+// var mans = [
+//   {name: '张三'},
+//   {name: '李四'},
+//   {name: '王二'},
+//   {name: '赵六'}
+// ]
+// function searchMan(query) {
+//   return mans.filter((man) => {
+//     return man.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+//   })
+// }

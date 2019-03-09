@@ -14,7 +14,7 @@ class CreateBook {
             str = str.slice(0, str.length-1)
             const newBook = new CreateBook()
             newBook.create(str)
-        }, 500))
+        }, 2000))
     }
     create(data) {
         const options = {

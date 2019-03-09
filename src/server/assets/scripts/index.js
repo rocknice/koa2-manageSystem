@@ -8,7 +8,7 @@ class Index {
                 // console.log(e.target.id)
                 // console.log(e.target.value)
                 console.log('测试点击')
-                window.location.href = `http://localhost:3000/search?${e.target.id}=${e.target.value}`
+                // window.location.href = `http://localhost:3001/search?${e.target.id}=${e.target.value}`
                 // $.ajax({
                 //     url: `http://localhost:3000/search?${e.target.id}=${e.target.value}`,
                 //     method: 'get',
