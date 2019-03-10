@@ -114,6 +114,7 @@ module.exports = {
       const result = await model.actionUpdate({
         params
       }, info.Books.id);
+      console.log(result);
       ctx.body = result;
     };
   },

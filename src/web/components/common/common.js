@@ -12,3 +12,4 @@ common.throttle = function (fn, wait) {
         }
     }
 }
+export default common

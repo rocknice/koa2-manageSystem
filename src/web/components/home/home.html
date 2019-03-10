@@ -32,13 +32,13 @@
             </table>
         </div>
     </div>
-<script type="module">
+<!-- <script type="module">
     console.log('支持module')
-    import('/scripts/index.js').then((_) => {
+    import('/scripts/home.bundle.js').then((_) => {
         const index = new _.default();
         index.view();
     })
-</script>
+</script> -->
 <script type="nomodule" src="https://cdn.staticfile.org/systemjs/3.0.0/system.js"></script>
 <script type="nomodule">
     System.import('/scripts/index-bundle.js').then((_)=>{

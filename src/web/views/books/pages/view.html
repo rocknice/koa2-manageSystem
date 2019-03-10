@@ -1,4 +1,4 @@
-{% extends '../../common/layout.html' %}
+{% extends 'pages:common/layout.html' %}
 
 {% block title %}查看图书{% endblock %}
 
@@ -6,10 +6,10 @@
     <!--injectcss-->
 {% endblock %}
 {% block navigation %}
-    {% include "../../../components/navigation/navigation.html" %} 
+    {% include "components:navigation/navigation.html" %} 
 {% endblock %}
 {% block content %}
-    {% include "../../../components/view/view.html" %} 
+    {% include "components:view/view.html" %} 
 {% endblock %}
 
 {% block scripts %}

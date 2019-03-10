@@ -4,8 +4,8 @@ const path = require('path')
 const _ = require('lodash')
 
 let config = {
-    "viewDir": path.join(__dirname, "../../web/views/books/", "pages"),
-    "staticDir": path.join(__dirname, "../../web/", "assets")
+    "viewDir": path.join(__dirname, "../views/books", "pages"),
+    "staticDir": path.join(__dirname, "..", "assets")
 }
 if(process.env.NODE_ENV == "development") {
     const localConfig = {

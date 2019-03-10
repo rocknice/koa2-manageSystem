@@ -1,4 +1,4 @@
-{% extends '../../common/layout.html' %}
+{% extends 'pages:common/layout.html' %}
 
 {% block title %}图书管理首页{% endblock %}
 
@@ -6,10 +6,10 @@
     <!--injectcss-->
 {% endblock %}
 {% block navigation %}
-    {% include "../../../components/navigation/navigation.html" %} 
+    {% include "components:navigation/navigation.html" %} 
 {% endblock %}
 {% block content %}
-    {% include "../../../components/home/home.html" %} 
+    {% include "components:home/home.html" %} 
 {% endblock %}
 
 {% block scripts %}
