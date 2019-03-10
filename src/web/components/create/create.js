@@ -1,6 +1,6 @@
 import './create.css'
 import common from '../common/common.js'
-class CreateBook {
+export default class CreateBook {
     constructor() {
         this.btn = $('.btn-success');
     }
@@ -40,6 +40,6 @@ class CreateBook {
         })
     }
 }
-const create = new CreateBook();
-create.fn()
+// const create = new CreateBook();
+// create.fn()
 // export default CreateBook

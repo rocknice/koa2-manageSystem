@@ -1,2 +1,3 @@
-import update from '../../components/update/update.js'
-update.init()
+import UpdateBook from '../../components/update/update.js'
+const update = new UpdateBook();
+update.fn();

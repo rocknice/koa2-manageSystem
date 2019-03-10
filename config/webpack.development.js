@@ -9,8 +9,8 @@ module.exports = {
             to: '../views/common/layout.html'
         }]),
         new CopyPlugin([{
-            from: join(__dirname, "../", "/src/web/assets/styles/index.css"),
-            to: '../assets/styles/index.css'
+            from: join(__dirname, "../", "/src/web/assets/styles/main.css"),
+            to: '../assets/styles/main.css'
         }]),
         new CopyPlugin([{
             from: join(__dirname, "../", "/src/web/assets/styles/bootstrap.min.css"),
@@ -19,10 +19,6 @@ module.exports = {
         new CopyPlugin([{
             from: join(__dirname, "../", "/src/web/assets/fonts"),
             to: '../assets/fonts'
-        }]),
-        new CopyPlugin([{
-            from: join(__dirname, "../", "/src/web/assets/scripts/home.js"),
-            to: '../assets/scripts/home.js'
         }]),
         new CopyPlugin([{
             from: join(__dirname, "../", "/src/web/components"),

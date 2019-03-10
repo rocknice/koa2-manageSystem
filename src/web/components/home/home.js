@@ -1,6 +1,6 @@
 import './home.css'
 import common from '../common/common.js'
-class Index {
+export default class Index {
     constructor() {
         this.btn = $('.form-control')
     }
@@ -29,6 +29,3 @@ class Index {
         }, 1000))
     }
 }
-const index = new Index();
-index.view();
-// export default Index

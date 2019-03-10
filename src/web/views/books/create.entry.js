@@ -1,2 +1,3 @@
-import create from '../../components/create/create.js'
-create.init()
+import CreateBook from '../../components/create/create.js'
+const create = new CreateBook();
+create.fn();
